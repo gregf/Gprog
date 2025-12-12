@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,10 +20,27 @@ public class RoomDungeonGenerator : RandomWalkDungeonGenerator
 
 
         HashSet<Vector2Int> floor = new HashSet<Vector2Int>();
+
         floor = CreateRooms(roomsList);
+
+        List<Vector2Int> roomCenter = new List<Vector2Int>();
+        foreach (var room in roomsList)
+        {
+            roomCenter.Add((Vector2Int)Vector3Int.RoundToInt(room.center));
+        }
+
+        HashSet<Vector2Int> corridors = ConnectRooms(roomCenter);
+        floor.UnionWith(corridors);
 
         tilemapVisualizer.paintFloorTiles(floor);
         WallGenerator.CreateWalls(floor, tilemapVisualizer);
+    }
+
+    private HashSet<Vector2Int> ConnectRooms(List<Vector2Int> roomCenter)
+    {
+        HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
+        var currentRoomCenter = roomCenter[Random.Range(0, roomCenter.Count)];
+        return corridors;
     }
 
     private HashSet<Vector2Int> CreateRooms(List<BoundsInt> roomsList)
