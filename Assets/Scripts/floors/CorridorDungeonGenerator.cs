@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CorridorFirstDungeonGenerator : RandomWalkDungeonGenerator
+public class CorridorDungeonGenerator : RandomWalkDungeonGenerator
 {
     [SerializeField]private int corridorLength = 14, corridorCount = 5;
     [SerializeField][Range(0.1f, 1)] private float roomPercent = 0.8f; 
