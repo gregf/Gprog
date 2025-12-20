@@ -40,7 +40,42 @@ public class RoomDungeonGenerator : RandomWalkDungeonGenerator
     {
         HashSet<Vector2Int> corridors = new HashSet<Vector2Int>();
         var currentRoomCenter = roomCenter[Random.Range(0, roomCenter.Count)];
+        roomCenter.Remove(currentRoomCenter);
+
+        while (roomCenter.Count > 0)
+        {
+            Vector2Int closest = FindClosestPointTo(currentRoomCenter, roomCenter);
+            roomCenter.Remove(closest);
+
+            HashSet<Vector2Int> newCorridor = CreateCorridor(currentRoomCenter, closest);
+            currentRoomCenter = closest;
+            corridors.UnionWith(newCorridor);
+        }
         return corridors;
+    }
+
+    private HashSet<Vector2Int> CreateCorridor(Vector2Int currentRoomCenter, Vector2Int closest)
+    {
+        
+    }
+
+    private Vector2Int FindClosestPointTo(Vector2Int currentRoomCenter, List<Vector2Int> roomCenter)
+    {
+        Vector2Int closest = Vector2Int.zero;
+        float distance =float.MaxValue;
+
+        //iteretes through all room centers and if it finds one thats close the the one
+        //that it is iterating now it becomes the closest
+        foreach (var position in roomCenter)
+        {
+            float currentDistance = Vector2.Distance(position, currentRoomCenter);
+            if (currentDistance < distance)
+            {
+                distance = currentDistance;
+                closest = position;
+            }
+        }
+        return closest;
     }
 
     private HashSet<Vector2Int> CreateRooms(List<BoundsInt> roomsList)
