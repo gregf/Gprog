@@ -35,6 +35,7 @@ public class TilemapVisualizer : MonoBehaviour
     {
         int typeAsInt = Convert.ToInt32(binaryType, 2);
         TileBase tile = null;
+
         if (WallTypeBinaryList.wallTop.Contains(typeAsInt))
         {
             tile = wallTop;
@@ -51,19 +52,61 @@ public class TilemapVisualizer : MonoBehaviour
         {
             tile = wallBottom;
         }
-        else if (WallTypeBinaryList.WallFull.Contains(typeAsInt))
+        else if (WallTypeBinaryList.wallFull.Contains(typeAsInt))
         {
             tile = wallFull;
         }
+
+
         if(tile != null)
         {
             paintSingleTiles(wallTilemap, tile, position);
         }
     }
 
-    internal void paintSingleCornerWall(Vector2Int position, string neighboursBinaryType)
+    internal void paintSingleCornerWall(Vector2Int position, string BinaryType)
     {
-        
+        int typeAsInt = Convert.ToInt32(BinaryType, 2);
+        TileBase tile = null;
+
+        if (WallTypeBinaryList.wallInnerCornerDownLeft.Contains(typeAsInt))
+        {
+            tile = wallInnerCornerDownLeft;
+        }
+        else if (WallTypeBinaryList.wallInnerCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallInnerCornerDownRight;
+        }
+        else if (WallTypeBinaryList.wallDiagonalCornerDownLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownLeft;
+        }
+        else if (WallTypeBinaryList.wallDiagonalCornerDownRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerDownRight;
+        }
+        else if (WallTypeBinaryList.wallDiagonalCornerUpRight.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpRight;
+        }
+        else if (WallTypeBinaryList.wallDiagonalCornerUpLeft.Contains(typeAsInt))
+        {
+            tile = wallDiagonalCornerUpLeft;
+        }
+        else if (WallTypeBinaryList.wallFullAlldirections.Contains(typeAsInt))
+        {
+            tile = wallFull;
+        }
+        else if (WallTypeBinaryList.wallBottom.Contains(typeAsInt))
+        {
+            tile = wallBottom;
+        }
+
+
+        if(tile != null)
+        {
+            paintSingleTiles(wallTilemap, tile, position);
+        } 
     }   
 
     public void Clear()

@@ -1,5 +1,6 @@
-
+﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public static class WallTypeBinaryList
 {
@@ -73,6 +74,7 @@ public static class WallTypeBinaryList
         0b10000110,
         0b11000100,
         0b01000010
+
     };
 
     public static HashSet<int> wallDiagonalCornerDownLeft = new HashSet<int>
@@ -88,7 +90,7 @@ public static class WallTypeBinaryList
     public static HashSet<int> wallDiagonalCornerUpLeft = new HashSet<int>
     {
         0b00010000,
-        0b01010000
+        0b01010000,
     };
 
     public static HashSet<int> wallDiagonalCornerUpRight = new HashSet<int>
@@ -97,15 +99,16 @@ public static class WallTypeBinaryList
         0b00000101
     };
 
-    public static HashSet<int> WallFull = new HashSet<int>
+    public static HashSet<int> wallFull = new HashSet<int>
     {
         0b1101,
         0b0101,
         0b1101,
         0b1001
+
     };
 
-    public static HashSet<int> wallFullAllDirections = new HashSet<int>
+    public static HashSet<int> wallFullAlldirections = new HashSet<int>
     {
         0b00010100,
         0b11100100,
@@ -141,10 +144,12 @@ public static class WallTypeBinaryList
         0b11010101,
         0b11010100,
         0b10010101
+
     };
 
-    public static HashSet<int> wallBottomAllDirections = new HashSet<int>
+    public static HashSet<int> wallBottmEightDirections = new HashSet<int>
     {
         0b01000001
     };
+
 }
