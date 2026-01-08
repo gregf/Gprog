@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class ItemPlacerData
 {
-    Dictionary<PlacementType, HashSet<Vector2Int>>
-    tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
+    Dictionary<PlacementType, HashSet<Vector2Int>> tileByType = new Dictionary<PlacementType, HashSet<Vector2Int>>();
 
     HashSet<Vector2Int> roomFloorNoCorridor;
 
@@ -17,9 +16,17 @@ public class ItemPlacerData
         foreach (var position in roomFloorNoCorridor)
         {
             int neighboursCount8dir = graph.Getneighbours8Directions(position).Count;
-            PlacementType type = neighboursCount8dir < 8 ? PlacementType.NearWall : PlacementType.OpenSpace;
+            PlacementType type;
+            if (neighboursCount8dir < 8)
+            {
+                type = PlacementType.NearWall;
+            }
+            else
+            {
+                type = PlacementType.OpenSpace;
+            }
 
-            if(tileByType.ContainsKey(type) == false)
+            if (tileByType.ContainsKey(type) == false)
             {
                 tileByType[type] = new HashSet<Vector2Int>();
             }

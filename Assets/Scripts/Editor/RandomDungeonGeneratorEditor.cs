@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-//this whole script allows for dungeon creation in the editor in case it is needed for level creation
+//this script allows for dungeon creation in the editor in case it is needed for level creation
 
 [CustomEditor(typeof(AbstractDungeonGenerator), true)]
 public class RandomDungeonGeneratorEditor : Editor
