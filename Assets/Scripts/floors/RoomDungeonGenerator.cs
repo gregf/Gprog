@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoomDungeonGenerator : RandomWalkDungeonGenerator
 {
@@ -7,6 +8,8 @@ public class RoomDungeonGenerator : RandomWalkDungeonGenerator
     [SerializeField]private int dungeonWidth = 20, dungeonHeight = 20;
     [SerializeField][Range(0,10)]private int offset = 1;
     [SerializeField]private bool randomWalkRooms = false;
+
+    public UnityEvent OnFinishedRoomGeneration;
 
     protected override void RunProceduralGeneration()
     {
@@ -63,6 +66,7 @@ public class RoomDungeonGenerator : RandomWalkDungeonGenerator
                 }
             }
         }
+        OnFinishedRoomGeneration?.Invoke();
         return floor;
     }
 
