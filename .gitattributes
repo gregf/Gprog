@@ -2,3 +2,4 @@
 * text=auto
 *.shader -linguist-detectable
 *.cginc -linguist-detectable
+*.hlsl -linguist-detectable
